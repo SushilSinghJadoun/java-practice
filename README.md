@@ -1,3 +1,3 @@
 # java-practice
-programs of java owned by Manish Bhatia
-Written by Sushil Singh
+programs of java owned and Written by
+Manish Bhatia and Sushil Singh
