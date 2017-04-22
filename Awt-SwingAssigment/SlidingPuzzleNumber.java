@@ -1,20 +1,38 @@
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import javax.swing.*;
 class SlidingPuzzleNumber extends JFrame implements ActionListener{
     JFrame f;
     JButton b[]=new JButton[9];
     static String title[]={"1","2","3","4","5","6","7","8",""};
+    static String suffleTitle[]=new String[9];
+
     JButton emp;
+    void shuffle(){
+        List<String>l=Arrays.asList(title);
+        ArrayList<String>al=new ArrayList<>(l);
+        Collections.shuffle(al);
+        for(int i=0;i<9;i++){
+            suffleTitle[i]=al.get(i);
+        }
+    }
     SlidingPuzzleNumber(String s){
 	f=new JFrame(s);
+        shuffle();
 	for(int i=0;i<9;i++){
-            b[i]=new JButton(title[i]);
-            b[i].addActionListener((ActionListener) this);
+            if(suffleTitle[i].equals("")){
+                b[i]=new JButton(suffleTitle[i]);
+                emp=b[i];
+            }else{
+                b[i]=new JButton(suffleTitle[i]);
+            }b[i].addActionListener((ActionListener) this);
             f.add(b[i]);
-	}emp=b[8];
-        f.setLayout(new  GridLayout(3,3,10,10));
+	}f.setLayout(new  GridLayout(3,3,10,10));
 	f.pack();
 	f.setVisible(true);
 	f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -78,10 +96,21 @@ class SlidingPuzzleNumber extends JFrame implements ActionListener{
                 flag=1;break;
             }
         }if(flag==0){
-            JOptionPane.showConfirmDialog(null,"Congratulation,wana play again.");
-            System.out.println("winner");
+            int response=JOptionPane.showConfirmDialog(rootPane,"Congratulation you completed,wana play again.","",JOptionPane.YES_NO_OPTION);
+            if(response==0){
+                shuffle();
+                for(int i=0;i<9;i++){
+                    if(suffleTitle[i].equals("")){
+                        b[i].setText(suffleTitle[i]);
+                        emp=b[i];
+                    }else
+                        b[i].setText(suffleTitle[i]);
+                }
+            }else if(response==1){
+                System.exit(0);
+            }
         }
     }public static void main(String[] args) {
-        SlidingPuzzleNumber slidingPuzzleNumber = new SlidingPuzzleNumber("Tic Tac Toe");
+        new SlidingPuzzleNumber("Tic Tac Toe");
     }
 }
