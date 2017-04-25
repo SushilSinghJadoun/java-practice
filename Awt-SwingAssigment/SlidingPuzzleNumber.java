@@ -113,6 +113,6 @@ class SlidingPuzzleNumber extends JFrame implements ActionListener{
             }
         }
     }public static void main(String[] args) {
-        new SlidingPuzzleNumber("Tic Tac Toe");
+        new SlidingPuzzleNumber("Sliding puzzle by sushil");
     }
 }
