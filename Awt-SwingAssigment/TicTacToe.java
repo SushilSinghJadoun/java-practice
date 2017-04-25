@@ -154,6 +154,6 @@ class TicTacToe extends JFrame implements ActionListener{
         else if("0".equals(b[2].getText())&&"0".equals(b[4].getText())&&"0".equals(b[6].getText()))
             winner0(2,4,6);
     }public static void main(String[] args) {
-        TicTacToe ticTacToe = new TicTacToe("Tic Tac Toe");
+        TicTacToe ticTacToe = new TicTacToe("Tic Tac Toe by sushil");
     }
 }
