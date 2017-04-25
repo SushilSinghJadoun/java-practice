@@ -10,20 +10,22 @@ class SlidingPuzzleNumber extends JFrame implements ActionListener{
     JFrame f;
     JButton b[]=new JButton[9];
     static String title[]={"1","2","3","4","5","6","7","8",""};
-    static String suffleTitle[]=new String[9];
+    static String suffleTitle[]={"2","4","3","7","1","6","5","","8"};
+
+    //static String suffleTitle[]=new String[9];
 
     JButton emp;
-    void shuffle(){
+    /*void shuffle(){
         List<String>l=Arrays.asList(title);
         ArrayList<String>al=new ArrayList<>(l);
         Collections.shuffle(al);
         for(int i=0;i<9;i++){
             suffleTitle[i]=al.get(i);
         }
-    }
+    }*/
     SlidingPuzzleNumber(String s){
 	f=new JFrame(s);
-        shuffle();
+        //shuffle();
 	for(int i=0;i<9;i++){
             if(suffleTitle[i].equals("")){
                 b[i]=new JButton(suffleTitle[i]);
@@ -98,7 +100,7 @@ class SlidingPuzzleNumber extends JFrame implements ActionListener{
         }if(flag==0){
             int response=JOptionPane.showConfirmDialog(rootPane,"Congratulation you completed,wana play again.","",JOptionPane.YES_NO_OPTION);
             if(response==0){
-                shuffle();
+                //shuffle();
                 for(int i=0;i<9;i++){
                     if(suffleTitle[i].equals("")){
                         b[i].setText(suffleTitle[i]);
